@@ -100,7 +100,7 @@ Problem: Worker couldn't reach master because security groups had wrong source.
 
 Solution: In AWS console, discovered inbound rules were pointing to a different security group ID. Fixed by ensuring all internal cluster rules had source set to the correct security group ID.
 
-Before fix:
+# Before fix:
 
 Port 6443 → source: sg-04710b2b2127ed95... (WRONG)
 
@@ -131,7 +131,7 @@ Updated SSH config with new permanent IPs
 
 <a name="key-takeaways"></a>
 
-🎯 Key Takeaways
+## 🎯 Key Takeaways
 Security groups are critical — always double-check sources
 
 Tokens must be exact — no extra spaces or characters
@@ -144,7 +144,7 @@ Elastic IPs save you from losing access after restarts
 
 These challenges taught me more than any tutorial could. Every error was a learning opportunity! 💪
 
-🔗 Quick Navigation
+## 🔗 Quick Navigation
 Worker Connection Issue
 
 Invalid Token Error
