@@ -1,6 +1,9 @@
 🔧 Challenges Faced & Solutions
+<a name="worker-connection"></a>
+
 1. Worker Node Couldn't Connect to Master
 Problem: Worker kept showing "Failed to validate connection to cluster"
+
 Solution: Fixed security group inbound rules — port 6443 source needed to be the security group itself, not a different group ID.
 
 Commands used:
@@ -11,8 +14,11 @@ sudo systemctl status k3s
 
 # Checked if port 6443 was listening
 sudo ss -tuln | grep 6443
+<a name="invalid-token"></a>
+
 2. Invalid Token Error
 Problem: Worker failed with "invalid token CA hash length"
+
 Solution: Generated fresh token from master using sudo cat /var/lib/rancher/k3s/server/node-token and used exact copy.
 
 Commands used:
@@ -23,8 +29,11 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 
 # On worker, rejoin with exact token
 curl -sfL https://get.k3s.io | K3S_URL=https://172.31.24.109:6443 K3S_TOKEN=<fresh-token> sh -s - agent --node-name k3s-server2
+<a name="dashboard-nodes"></a>
+
 3. Dashboard Not Showing Nodes
 Problem: Dashboard loaded but nodes section was empty
+
 Solution: Created cluster role binding to give dashboard admin permissions.
 
 Commands used:
@@ -35,8 +44,11 @@ kubectl create clusterrolebinding admin-user-binding --clusterrole=cluster-admin
 
 # Generate fresh token for login
 kubectl -n kubernetes-dashboard create token admin-user
+<a name="app-access"></a>
+
 4. App Not Accessible from Browser
 Problem: nginx welcome page wouldn't load
+
 Solution: Added inbound rule for NodePort range 30000-32767 to security group.
 
 AWS Security Group rule added:
@@ -59,8 +71,11 @@ kubectl get svc nginx
 # Output: 80:31779/TCP
 
 # Accessed in browser: http://worker-ip:31779
+<a name="kubectl-hanging"></a>
+
 5. kubectl Hanging
 Problem: kubectl get nodes would hang indefinitely
+
 Solution: Set KUBECONFIG environment variable correctly and fixed permissions on kubeconfig file.
 
 Commands used:
@@ -78,6 +93,8 @@ source ~/.bashrc
 
 # Test it works
 kubectl get nodes
+<a name="sg-misconfiguration"></a>
+
 6. Security Group Misconfiguration (Initial Setup)
 Problem: Worker couldn't reach master because security groups had wrong source.
 
@@ -95,6 +112,8 @@ Port 10250 → source: sg-081e3c89da29080b4
 
 Port 8472 (UDP) → source: sg-081e3c89da29080b4
 
+<a name="elastic-ip"></a>
+
 7. Elastic IP Association
 Problem: After restarting EC2 instances, public IPs changed, breaking SSH access.
 
@@ -110,6 +129,8 @@ Associated one with worker node
 
 Updated SSH config with new permanent IPs
 
+<a name="key-takeaways"></a>
+
 🎯 Key Takeaways
 Security groups are critical — always double-check sources
 
@@ -122,4 +143,21 @@ NodePort ranges must be opened in cloud firewalls
 Elastic IPs save you from losing access after restarts
 
 These challenges taught me more than any tutorial could. Every error was a learning opportunity! 💪
+
+🔗 Quick Navigation
+Worker Connection Issue
+
+Invalid Token Error
+
+Dashboard Nodes Not Showing
+
+App Access Issue
+
+kubectl Hanging
+
+Security Group Misconfiguration
+
+Elastic IP Issue
+
+Key Takeaways
 
