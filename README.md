@@ -66,19 +66,22 @@ Built a production-grade 2-node High Availability Kubernetes cluster using k3s o
 - Add Prometheus/Grafana monitoring stack
 
 ## 📁 Repository Structure
+## 📁 Repository Structure
+```
 kubernetty-project/
 ├── README.md
 ├── images/
-│ ├── 01-architecture.png
-│ ├── 02-aws-instances.png
-│ ├── 03-security-group-rules.png
-│ ├── 04-nodes-both-ready.png
-│ ├── 05-nodes-final.png
-│ ├── 06-nginx-pod-running.png
-│ ├── dashboard-overview.png
-│ └── 09-nginx-welcome-page.png
+│   ├── 01-architecture.png
+│   ├── 02-aws-instances.png
+│   ├── 03-security-group-rules.png
+│   ├── 04-nodes-both-ready.png
+│   ├── 05-nodes-final.png
+│   ├── 06-nginx-pod-running.png
+│   ├── dashboard-overview.png
+│   └── 09-nginx-welcome-page.png
 └── CHALLENGES.md
-
+```
+📖 See [CHALLENGES.md](CHALLENGES.md) for detailed troubleshooting steps.
 
 ## 🎓 What I Learned
 - Kubernetes architecture and components (control plane, worker nodes)
@@ -88,9 +91,10 @@ kubernetty-project/
 - Exposing applications via NodePort services
 
 ## 📫 Connect With Me
-- GitHub: [your-username](https://github.com/your-username)
-- LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
-- Email: your-email@example.com
+- ## 📫 Connect With Me
+- GitHub: [donaemeka](https://github.com/donaemeka)
+- LinkedIn: [Donatus Emeka Anyalebechi](https://linkedin.com/in/donatus-devops)
+- Email: donaemeka92@gmail.com
 
 ---
 
