@@ -48,7 +48,7 @@ Built a production-grade 2-node High Availability Kubernetes cluster using k3s o
 - Ran test nginx application accessible via browser
 - Implemented proper security practices (SSH restricted to my IP, internal cluster communication via security group)
 
-## 🔧 Challenges Solved
+### 🔧 Challenges Solved
 | Challenge | Solution |
 |-----------|----------|
 | Worker node couldn't connect to master | Fixed security group inbound rules to allow port 6443 |
@@ -56,13 +56,15 @@ Built a production-grade 2-node High Availability Kubernetes cluster using k3s o
 | Dashboard nodes not showing | Created proper cluster role bindings |
 | App inaccessible from browser | Added NodePort range (30000-32767) to security group |
 
+📖 *For detailed troubleshooting steps, see the Challenges.md file in this repository.*
+
 ## 🚀 Future Improvements
 - Add more worker nodes for scalability
 - Implement auto-scaling based on load
 - Deploy a real microservices application
 - Add Prometheus/Grafana monitoring stack
 
-## 📁 Repository Structure
+
 ## 📁 Repository Structure
 ```
 kubernetty-project/
